@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.catsapitraining.R
 import com.example.catsapitraining.adapter.CatNameAdapter
 import com.example.catsapitraining.databinding.ActivityMainBinding
 import com.example.catsapitraining.viewmodel.CatViewModel
@@ -15,15 +19,7 @@ class MainActivity : AppCompatActivity() {
     // binding
     private lateinit var binding: ActivityMainBinding
 
-    // widgets
-    private lateinit var rvCat: RecyclerView
-    private lateinit var loading: ProgressBar
-
-    // viewModel
-    private lateinit var viewModel: CatViewModel
-
-    // adapter
-    private lateinit var adapter: CatNameAdapter
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,28 +27,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(CatViewModel::class.java)
+        // get nav host fragment
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
-        // init widgets
-        loading = binding.progressBar
+        // instantiate the navController using navHostFragment
+        navController = navHostFragment.navController
 
-        viewModel.searchCat()
+        // make sure actions in the ActionBar get propagated to the NavController
+        setupActionBarWithNavController(navController)
+    }
 
-        rvCat = binding.rvCat
-        rvCat.layoutManager = LinearLayoutManager(this)
-        rvCat.setHasFixedSize(true)
-
-        adapter = CatNameAdapter(this@MainActivity)
-        adapter.notifyDataSetChanged()
-        rvCat.adapter = adapter
-
-        viewModel.getCat().observe(this) {
-            if (it != null) {
-                adapter.setList(it)
-            }
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
