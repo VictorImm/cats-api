@@ -8,24 +8,12 @@
 
 
     <ImageView
-        android:id="@+id/banner"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="-150dp"
-        android:src="@drawable/banner_cat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
         android:id="@+id/tv_photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="@+id/banner"
-        app:layout_constraintEnd_toEndOf="@+id/banner"
-        app:layout_constraintStart_toStartOf="@+id/banner"
-        app:layout_constraintTop_toBottomOf="@+id/banner"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
     <TextView
@@ -59,89 +47,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_origin">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_text_friend"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/tv_text_groom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginTop="8dp"
+            android:text="Friendly"
+            app:layout_constraintEnd_toEndOf="@+id/tv_friend"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@+id/tv_friend"
+            app:layout_constraintTop_toBottomOf="@+id/tv_friend" />
+
+        <TextView
+            android:id="@+id/tv_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="0.0"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tv_intel"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread_inside">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_text_friend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:text="Friendly"
-                app:layout_constraintEnd_toStartOf="@+id/tv_text_intel"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_text_intel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Intelligence"
+            app:layout_constraintEnd_toEndOf="@+id/tv_intel"
+            app:layout_constraintStart_toStartOf="@+id/tv_intel"
+            app:layout_constraintTop_toBottomOf="@+id/tv_intel" />
 
-            <TextView
-                android:id="@+id/tv_friend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="0.0"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_text_friend"
-                app:layout_constraintStart_toStartOf="@+id/tv_text_friend"
-                app:layout_constraintTop_toBottomOf="@+id/tv_text_friend" />
-
-            <TextView
-                android:id="@+id/tv_text_intel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:text="Intelligence"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/tv_text_friend"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_intel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="0.0"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_text_intel"
-                app:layout_constraintStart_toStartOf="@+id/tv_text_intel"
-                app:layout_constraintTop_toBottomOf="@+id/tv_text_intel" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_intel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tv_groom"
+            app:layout_constraintStart_toEndOf="@+id/tv_friend"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_text_groom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="8dp"
             android:text="Grooming"
-            app:layout_constraintBottom_toTopOf="@+id/tv_groom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            app:layout_constraintEnd_toEndOf="@+id/tv_groom"
+            app:layout_constraintStart_toStartOf="@+id/tv_groom"
+            app:layout_constraintTop_toBottomOf="@+id/tv_groom" />
 
         <TextView
             android:id="@+id/tv_groom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="0.0"
-            android:textStyle="bold"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tv_text_groom"
-            app:layout_constraintStart_toStartOf="@+id/tv_text_groom"
-            app:layout_constraintTop_toBottomOf="@+id/tv_text_groom" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_intel"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
