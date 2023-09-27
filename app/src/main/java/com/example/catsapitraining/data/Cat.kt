@@ -1,5 +1,9 @@
 package com.example.catsapitraining.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Cat(
     val name: String,
     val image_link: String,
@@ -10,4 +14,6 @@ data class Cat(
     val playfulness: Int,
     val intelligence: Int,
     val grooming: Int,
-)
+): Parcelable {
+    constructor(): this("", "", "", 0, 0, 0, 0, 0, 0)
+}
